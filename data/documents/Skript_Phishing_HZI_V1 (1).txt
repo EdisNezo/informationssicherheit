@@ -1,0 +1,267 @@
+Skript „Umgang mit Phishing“
+
+Willkommen zum HZI-Trainingsmodul, in dem Sie lernen, wie Beschäftigte im HZI Phishing Mails erkennen
+und damit umgehen.
+
+Threat Awareness
+
+Ein neuer Arbeitstag startet am HZI und wie jeden Morgen
+überprüfen Sie zunächst Ihr E-Mail-Postfach, da Sie
+häufig wichtige E-Mails von Kolleginnen und Kollegen und
+von externen Dienstleistern erhalten.
+Sie schauen sich die erste E-Mail in Ihrem Postfach an:
+
+Threat Identification
+
+Doch warum könnte es sich bei dieser E-Mail um ein
+Informationssicherheitsrisiko handeln?
+
+1. Allgemein
+
+Die folgenden Hinweise deuten darauf hin, warum diese
+E-Mail ein Informationssicherheitsrisiko sein könnte.
+
+1. Absenderadresse: Die E-Mail ist als "Extern”
+gekennzeichnet und stammt von einer Adresse
+außerhalb Ihrer Organisation. Auch wenn E-Mails
+außerhalb Ihrer Organisation typisch sind, ist es
+wichtig zu wissen, dass externe E-Mails immer mit
+einer besonderen Vorsicht betrachtet werden
+müssen.
+
+2. Verdächtige Datei: Die E-Mail fordert Sie auf, auf
+einen Link zu gehen, um ein Dokument zu öffnen
+und zu signieren.
+
+Information
+
+Doch wieso genau, kann eine solche E-Mail ein
+Informationssicherheitsrisiko sein?
+Bei einer solchen E-Mail kann es sich um einen gefährlichen
+Angriff, einen Phishing-Angriff, handeln. Ein solcher Angriff
+birgt verschiedene Gefahren. Einerseits kann er als Einfallstor
+für die Installation von Malware auf Ihrem PC, Laptop oder
+Tablet dienen. Malware, die auch als Schadprogramm
+bezeichnet wird, ist eine Software, die mit dem Ziel entwickelt
+wurde, unerwünschte und meist schädliche Funktionen auf
+einem IT-System auszuführen.
+Andererseits kann Phishing eine Form von Social
+Engineering sein. Social Engineering bedeutet, dass
+Angreifer die menschliche Psychologie ausnutzen, um
+vertrauliche Informationen oder Zugänge zu Systemen zu
+erlangen. Die Angreifer täuschen, überreden oder
+manipulieren, um Sie dazu zu bringen, geheime
+Informationen preiszugeben oder ungewollte Handlungen
+durchzuführen.
+
+Nice to know: Social Engineering kann auf verschiedene
+Arten erfolgen, zum Beispiel durch gefälschte E-Mails,
+betrügerische Anrufe, gefälschte Websites oder sogar
+persönliche Interaktionen, bei denen sich die Angreifer als
+autorisierte Personen ausgeben.
+Wenn Sie als Person gezielt angegriffen werden, so nennt
+man dies Spear Phishing. Und tatsächlich, die zweite EMail in Ihrem Postfach ist ein Beispiel für Spear Phishing:
+
+Information (Extern)
+
+Threat Impact Assessment
+
+Nice-to-Know: Spear-Phishing-Mails werden häufig durch
+öffentlich zugängliche Informationen auf Webseiten oder
+Social Media erstellt. Ein weiteres Einfallstor, welches in
+dem gezeigten Beispiel genutzt wurde, kann entstehen,
+wenn Sie oder Ihre Kolleginnen und Kollegen E-Mails intern
+weiterleiten und dabei der Angreifer durch Setzen in "CC"
+die Weiterleitung sehen kann.
+
+Doch was genau können die Konsequenzen von
+Phishing sein?
+In den letzten Jahren sind viele Einrichtungen Opfer von
+Cyberkriminalität und Phishing-Attacken geworden. Sind
+solche Attacken erfolgreich, so gelangen Cyberkriminelle
+an Ihr Arbeitsgerät und begehen mindestens eine
+Handlung, die dem HZI schadet.
+1. Die Angreifer stehlen Daten
+2. Die Angreifer löschen oder verändern Daten
+3. Die Angreifer verschlüsseln Daten und fordern
+anschließend Lösegeld für die Entschlüsselung.
+Solche Vorfälle würden für das HZI neben dem Verlust von
+Daten und möglichen Lösegeldzahlungen auch einen
+erheblichen Reputationsverlust bedeuten, da das Vertrauen
+in die Sicherheitsmaßnahmen stark beeinträchtigt wird. Die
+Wiederherstellung der Datensicherheit würde zudem die
+Arbeitsabläufe erheblich stören. Der Verlust sensibler
+Daten, wie etwa Forschungsdaten, könnte rechtliche
+Konsequenzen nach sich ziehen, was zu finanziellen
+Verlusten durch Bußgelder, Schadensersatzforderungen
+und Einnahmeausfällen aufgrund des beschädigten Rufs
+führen kann.
+Seien Sie sich außerdem bewusst, dass Angreifer, sobald
+sie Zugang zu Ihren Daten oder Ihrem Arbeitsgerät
+erlangt haben, möglicherweise in Ihrem Namen handeln
+können. Im schlimmsten Fall könnten sie unter Ihrer
+Identität Cyber-Attacken auf Personen und Institutionen,
+mit denen Sie in Verbindung stehen, durchführen.
+
+___________
+
+Tactic Choice
+
+Um sich bestmöglich zu schützen, sollten Sie sich
+zunächst vergewissern, dass keine Gefahr vorliegt,
+indem Sie als Erstes bei jeder E-Mail überlegen, ob
+Sie diese erwarten und sie plausibel erscheint. Als
+Zweites sollten Sie immer die Identität des
+Absenders und als Drittes die Echtheit der Nachricht
+überprüfen. Außerdem sollten Sie sich immer bewusst
+und vorsichtig im Umgang mit E-Mail-Anhängen, PDFDateien und Links verhalten. Dazu gehört niemals
+blind Anweisungen in E-Mails zu folgen und auf
+keinen Fall aus Neugierde Links oder Anhänge zu
+öffnen.
+
+Tactic Justification
+
+Indem Sie die Plausibilität der E-Mail und die Identität des
+Absenders überprüfen, können Sie sicherstellen, ob diese
+Person auch wirklich berechtigt ist Sie zu kontaktieren
+und Informationen von Ihnen einzuholen. In dem Sie nicht
+auf Links und Anhänge klicken verhindern Sie, dass
+schädliche Software installiert werden kann oder sensible
+Informationen in die falschen Hände geraten. Gleichzeitig
+verhindern Sie so auch einen möglichen Betrug und
+Identitätsdiebstahl und Sie schützen sich und das HZI vor
+erfolgreicher Cyberkriminalität.
+Im Folgenden wird Ihnen gezeigt, wie Sie die richtigen
+Maßnahmen ausführen können. Falls Sie sich dazu nicht
+in der Lage fühlen oder Sie sich unsicher sind, scheuen
+Sie sich niemals den IT-help desk zu kontaktieren.
+
+Tactic Mastery
+
+1) Plausibilität
+
+Überprüfen Sie zunächst die Plausibilität der EMail, indem Sie überlegen, ob Sie erwarten, dass
+eine Person eine E-Mail mit entsprechendem Betreff
+schickt oder Sie sie sogar darum gebeten haben
+Falls Sie dies mit nein beantworten müssen, können
+Sie als nächstes die Identität des Absenders und
+Echtheit der Nachricht überprüfen. Hierbei können
+Sie wie folgt vorgehen:
+
+2) Absenderüberprüfung
+Bevor Sie die E-Mail öffnen, können Sie bereits die EMail-Adresse des Absenders überprüfen und schauen, ob
+
+(Kennzeichnung Extern)
+
+es sich bei der E-Mail um eine legitime E-Mail einer
+internen oder externen Person handelt.
+Die internen E-Mail-Adressen des HZIs sind dabei immer
+wie folgt aufgebaut:
+Vorname.nachname@helmholtz-hzi.de
+Die externen E-Mail-Adressen des HZIs sind dabei immer
+wie folgt aufgebaut:
+extern-vorname.nachname@helmholtz-hzi.de
+Wichtig: Achten Sie unbedingt auf Rechtschreibfehler
+Um externe E-Mails auf den ersten Blick erkennen zu
+können, unterstützt das HZI Sie, indem exter E-Mails
+wie folgt gekennzeichnet werden:
+
+•
+•
+
+(Weiterleitung)
+
+Vor dem Namen steht extern
+Es gibt keinen offiziellen Abbinder
+
+Wichtig: Beachten Sie jedoch, dass dies auf Ihrem iPhone
+und iPad nicht angezeigt wird.
+Wenn Sie sich unsicher sind ob die E-Mail echt ist,
+kontaktieren Sie den Absender am besten über einen
+anderen Kommunikationsweg, wie beispielsweise per
+Anruf. Achten Sie hierbei jedoch darauf, nicht einfach die
+Telefonnummer zu verwenden, die möglicherweise in der
+E-Mail hinterlegt ist. Überprüfen Sie andere Wege, die
+Ihnen ermöglichen Kontaktdaten des möglichen
+Absenders zu erhalten.
+
+2) Umgang mit Links und
+Anhängen
+
+Wie öffnet man Dateianhänge
+in E-Mails am sichersten?
+
+Falls Sie das Gefühl haben, dass Sie nicht die
+richtige Ansprechperson sind dann leiten Sie die EMail auf keinen Fall einfach kommentarlos an Ihre
+Kolleginnen und Kollegen weiter, da diese ansonsten
+denken könnten, dass Sie diese E-Mail bereits auf
+Legitimität und Sicherheit überprüft haben.
+Entsprechend sollten Sie die E-Mail vor dem
+Weiterleiten auf Phishing überprüfen oder Ihre
+Kolleginnen und Kollegen bei der Weiterleitung
+darüber informieren, dass es sich hierbei auch um
+eine Phishing-Mail handeln könnte.
+
+Achten Sie darauf, den Absender der E-Mail bei einer
+Weiterleitung nicht in CC zu setzen.
+
+Was ist der richtige Umgang
+mit Verlinkungen in PDFDateien?
+
+Auch wenn Ihnen der Absender bekannt ist, seien Sie
+vorsichtig beim Öffnen von Anhängen und Klicken auf
+Links, besonders bei weitergeleiteten E-Mails, da diese
+möglicherweise ungeprüft sind.
+Um sich richtig zu verhalten, sollten Sie die folgenden
+Regeln beachten:
+
+Zunächst sollten Sie den E-Mail-Anhang niemals doppelt
+anklicken. Der Anhang sollte entweder per Drag- and
+Drop oder per Funktion von Outlook auf dem lokalen
+Datenträger (z.B. im Download Ordner) gespeichert
+werden. Auf diesem Weg prüft der HZI-Virenscanner
+SentinelOne im Moment des Speicherns, ob die Datei
+gefährlich ist.
+Außerdem sollten Sie Links in PDF-Dateien nicht direkt
+anklicken. Das beste Vorgehen ist, eine PDF-Datei mit
+dem Adobe Acrobat Reader zu öffnen. Markieren Sie
+dazu den Text des Links, kopieren Sie ihn und fügen Sie
+ihn in den Browser ein. Wenn die URL dem entspricht,
+was in der PDF stand, dann kann der Link unbedenklich
+geöffnet werden. Gibt es Abweichungen, sollte die URL
+nicht geöffnet werden.
+Falls Sie einen Link erhalten, der Ihnen sonderbar
+erscheint, so können Sie diesen kopieren und auf der
+folgenden Seite prüfen lassen:
+https://l3montree.com/loesungen/phishing-link-check
+Pausieren Sie das Video gerne hier, um die Adresse des
+Links abzuschreiben.
+Falls Sie eine Phishing-E-Mail erhalten haben, dann
+melden Sie dies bitte dem IT-Help Desk, indem Sie die EMails als Anhang dem IT-Help Desk weiterleiten.
+Eine Anweisung, wie Sie eine E-Mail als Anhang
+weiterleiten können, finden Sie im Intranet, indem Sie
+nach "Outlook - E-Mail als Anhang" suchen.
+
+Tactic Check & Follow – Up
+Haben Sie eine Phishing-E-Mail aufgedeckt, können Sie
+nun weitere Maßnahmen ergreifen, um sich, Ihre
+Kolleginnen und Kollegen und das HZI zu schützen.
+Dazu gehört, dass Sie Ihre Kolleginnen und Kollegen
+warnen. Zusätzlich sollten Sie sich regelmäßig
+Informationen zu Datenschutz und Informationssicherheit
+einholen, bspw. über den Newsletter des
+Informationssicherheitsbeauftragten im Intranet des HZI.
+Generell sollten Sie immer aufmerksam mit Ihren
+sensiblen Informationen umgehen.
+Schauen Sie sich gerne als nächstes das Trainingsvideo
+zum Thema Malware an, um zu lernen, wie Sie sich auch
+sicher im Umgang mit USB-Sticks und externen
+Laufträgern verhalten können.
+
+Super, Sie haben diese Einheit jetzt abgeschlossen!
+Sie können das Wissen jetzt bei Ihrer Arbeit umsetzen. Dadurch steigern Sie das
+Sicherheitsbewusstsein in der ganzen Einrichtung und Sie schützen sich, Ihre Kolleginnen
+und Kollegen und das HZI.
+Gut gemacht
+
+

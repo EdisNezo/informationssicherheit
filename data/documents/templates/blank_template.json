@@ -1,0 +1,30 @@
+{
+    "title": "E-Learning-Skript",
+    "description": "Ein Skript für eine E-Learning-Einheit im medizinischen Bereich",
+    "sections": [
+      {
+        "id": "learning_objectives",
+        "title": "Lernziele",
+        "description": "Die zu erreichenden Lernziele der Schulung",
+        "type": "learning_objectives"
+      },
+      {
+        "id": "content",
+        "title": "Fachliche Inhalte",
+        "description": "Die zu vermittelnden Fachinhalte",
+        "type": "content"
+      },
+      {
+        "id": "methods",
+        "title": "Didaktische Methoden",
+        "description": "Die eingesetzten Vermittlungsmethoden",
+        "type": "methods"
+      },
+      {
+        "id": "assessment",
+        "title": "Erfolgsmessung",
+        "description": "Methoden zur Überprüfung des Lernerfolgs",
+        "type": "assessment"
+      }
+    ]
+  }

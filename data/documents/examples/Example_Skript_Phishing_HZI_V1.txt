@@ -1,3 +1,4 @@
+Example Skript
 Skript „Umgang mit Phishing“
 
 Willkommen zum HZI-Trainingsmodul, in dem Sie lernen, wie Beschäftigte im HZI Phishing Mails erkennen

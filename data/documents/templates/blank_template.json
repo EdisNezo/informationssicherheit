@@ -1,30 +1,88 @@
 {
-    "title": "E-Learning-Skript",
-    "description": "Ein Skript für eine E-Learning-Einheit im medizinischen Bereich",
-    "sections": [
-      {
-        "id": "learning_objectives",
-        "title": "Lernziele",
-        "description": "Die zu erreichenden Lernziele der Schulung",
-        "type": "learning_objectives"
-      },
-      {
-        "id": "content",
-        "title": "Fachliche Inhalte",
-        "description": "Die zu vermittelnden Fachinhalte",
-        "type": "content"
-      },
-      {
-        "id": "methods",
-        "title": "Didaktische Methoden",
-        "description": "Die eingesetzten Vermittlungsmethoden",
-        "type": "methods"
-      },
-      {
-        "id": "assessment",
-        "title": "Erfolgsmessung",
-        "description": "Methoden zur Überprüfung des Lernerfolgs",
-        "type": "assessment"
-      }
-    ]
-  }
+  "template": "Informationssicherheits-E-Learning-Skript",
+  "version": "1.0",
+  "sections": [
+    {
+      "id": 1,
+      "title": "Threat Awareness / Bedrohungsbewusstsein",
+      "description": "Schafft Kontext und Ausgangssituation für die Sicherheitsbedrohung",
+      "questions": [
+        "Was ist der Kontext?",
+        "Was ist die Ausgangssituation?",
+        "In welchen Szenarien tritt die Gefahr auf?"
+      ],
+      "example": "Ein neuer Arbeitstag startet am HZI und wie jeden Morgen überprüfen Sie zunächst Ihr E-Mail-Postfach, da Sie häufig wichtige E-Mails von Kolleginnen und Kollegen und von externen Dienstleistern erhalten."
+    },
+    {
+      "id": 2,
+      "title": "Threat Identification / Bedrohungserkennung",
+      "description": "Identifiziert die spezifische Bedrohung und ihre Merkmale",
+      "questions": [
+        "Was ist oder worin besteht die Gefahr?",
+        "Welche Merkmale gibt es?",
+        "Wie erkenne ich diese?"
+      ],
+      "example": "Doch warum könnte es sich bei dieser E-Mail um ein Informationssicherheitsrisiko handeln? Die folgenden Hinweise deuten darauf hin, warum diese E-Mail ein Informationssicherheitsrisiko sein könnte. 1. Absenderadresse: Die E-Mail ist als 'Extern' gekennzeichnet und stammt von einer Adresse außerhalb Ihrer Organisation. 2. Verdächtige Datei: Die E-Mail fordert Sie auf, auf einen Link zu gehen, um ein Dokument zu öffnen und zu signieren."
+    },
+    {
+      "id": 3,
+      "title": "Threat Impact Assessment / Bedrohungsausmaß",
+      "description": "Bewertet die möglichen Konsequenzen der Bedrohung",
+      "questions": [
+        "Was sind die Konsequenzen, die aus der Bedrohung entstehen können (insbesondere auch, wenn nicht gehandelt wird)?"
+      ],
+      "example": "In den letzten Jahren sind viele Einrichtungen Opfer von Cyberkriminalität und Phishing-Attacken geworden. Sind solche Attacken erfolgreich, so gelangen Cyberkriminelle an Ihr Arbeitsgerät und begehen mindestens eine Handlung, die dem HZI schadet. 1. Die Angreifer stehlen Daten. 2. Die Angreifer löschen oder verändern Daten. 3. Die Angreifer verschlüsseln Daten und fordern anschließend Lösegeld für die Entschlüsselung."
+    },
+    {
+      "id": 4,
+      "title": "Tactic Choice / Taktische Maßnahmenauswahl",
+      "description": "Stellt Handlungsoptionen vor und empfiehlt die beste Vorgehensweise",
+      "questions": [
+        "Was sind die Handlungsoptionen zwischen denen grundsätzlich gewählt werden kann oder entschieden werden muss?",
+        "Welche sollte gewählt werden?"
+      ],
+      "example": "Um sich bestmöglich zu schützen, sollten Sie sich zunächst vergewissern, dass keine Gefahr vorliegt, indem Sie als Erstes bei jeder E-Mail überlegen, ob Sie diese erwarten und sie plausibel erscheint. Als Zweites sollten Sie immer die Identität des Absenders und als Drittes die Echtheit der Nachricht überprüfen."
+    },
+    {
+      "id": 5,
+      "title": "Tactic Justification / Maßnahmenrechtfertigung",
+      "description": "Begründet, warum die gewählte Maßnahme am besten geeignet ist",
+      "questions": [
+        "Warum genau ist die Maßnahme/ Handlungsoption besser als andere?"
+      ],
+      "example": "Indem Sie die Plausibilität der E-Mail und die Identität des Absenders überprüfen, können Sie sicherstellen, ob diese Person auch wirklich berechtigt ist Sie zu kontaktieren und Informationen von Ihnen einzuholen. In dem Sie nicht auf Links und Anhänge klicken verhindern Sie, dass schädliche Software installiert werden kann oder sensible Informationen in die falschen Hände geraten."
+    },
+    {
+      "id": 6,
+      "title": "Tactic Mastery / Maßnahmenbeherrschung",
+      "description": "Detaillierte Anleitung zur Umsetzung der gewählten Handlung",
+      "questions": [
+        "Wie muss konkret vorgegangen werden, um die gewählte Handlung umzusetzen?",
+        "Was sind die einzelnen Schritte, auf die geachtet werden muss?"
+      ],
+      "example": "Überprüfen Sie zunächst die Plausibilität der E-Mail, indem Sie überlegen, ob Sie erwarten, dass eine Person eine E-Mail mit entsprechendem Betreff schickt oder Sie sie sogar darum gebeten haben. Falls Sie dies mit nein beantworten müssen, können Sie als nächstes die Identität des Absenders und Echtheit der Nachricht überprüfen."
+    },
+    {
+      "id": 7,
+      "title": "Tactic Check & Follow-Up / Anschlusshandlungen",
+      "description": "Beschreibt notwendige Folgeaktivitäten und Verantwortlichkeiten",
+      "questions": [
+        "Was sind konkrete Anschlusshandlungen, die nach der Ausführung noch getätigt werden müssen?",
+        "Wer bleibt über was auf dem Laufenden?"
+      ],
+      "example": "Haben Sie eine Phishing-E-Mail aufgedeckt, können Sie nun weitere Maßnahmen ergreifen, um sich, Ihre Kolleginnen und Kollegen und das HZI zu schützen. Dazu gehört, dass Sie Ihre Kolleginnen und Kollegen warnen. Zusätzlich sollten Sie sich regelmäßig Informationen zu Datenschutz und Informationssicherheit einholen."
+    }
+  ],
+  "contextQuestions": [
+    "In welcher medizinischen Einrichtung sollen die Schulungen umgesetzt werden?",
+    "Welche spezifischen Bedrohungen sind für Ihre Einrichtung besonders relevant?",
+    "Gibt es spezifische Personengruppen, die zu berücksichtigen sind?",
+    "Welche Vorkenntnisse haben die Teilnehmer im Bereich Informationssicherheit?",
+    "Wie lang darf die Schulung maximal sein?",
+    "Gibt es besondere regulatorische Anforderungen, die berücksichtigt werden müssen?",
+    "Welche sensiblen Daten werden in Ihrer Einrichtung verarbeitet?",
+    "Gab es in der Vergangenheit bereits Sicherheitsvorfälle und welcher Art waren diese?",
+    "Welche technischen Sicherheitsmaßnahmen sind bereits implementiert?",
+    "Wie sieht der typische Arbeitsalltag der Mitarbeiter in Bezug auf IT-Systeme aus?"
+  ]
+}

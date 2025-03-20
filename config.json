@@ -3,7 +3,7 @@
     "vectorstore_dir": "./data/vectorstore",
     "output_dir": "./data/output",
     "template_path": "./data/documents/templates/blank_template.json",
-    "model_name": "llama3:8b",
+    "model_name": "mistral",
     "chunk_size": 1000,
     "chunk_overlap": 200
   }

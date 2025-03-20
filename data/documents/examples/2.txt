@@ -1,0 +1,201 @@
+Ärzte – Behandelnde Aufgaben
+
+Einleitung und Kontext
+Als behandelnde Ärzte stehen Sie tagtäglich in direktem Patientenkontakt. Dabei ist es essenziell, auch in klinischen Abläufen die IT-Sicherheit zu berücksichtigen, da moderne Behandlungsprozesse immer stärker digitalisiert ablaufen. Die folgenden Szenarien zeigen praxisnahe Anwendungen des Kompetenzmodells für die direkten Behandlungsprozesse.
+
+(Die Struktur orientiert sich an den gleichen 7 Stufen wie in Skript 1, wobei der Fokus auf dem klinisch-behandelnden Kontext liegt.)
+1. Phishing-/Social-Engineering-Attacken
+
+Threat Awareness:
+Im Behandlungsalltag erhalten Sie häufig E-Mails von Patienten, Labors oder externen Spezialisten. Es ist entscheidend, hier misstrauisch zu sein, wenn ungewöhnliche Nachrichten oder Aufforderungen eintreffen.
+Fragen:
+– Wann erscheinen E-Mails ungewöhnlich in Ihrem klinischen Kontext?
+– Wie könnte ein Phishing-Angriff den Behandlungsprozess stören?
+
+Threat Identification:
+Auffällige Merkmale sind fehlerhafte Adressen, untypische Formulierungen und ungewöhnliche Dateianhänge.
+Beispiel: Eine E-Mail, die scheinbar kritische Informationen zu einem Patienten liefert, aber über einen externen und nicht verifizierten Absender stammt.
+
+Threat Impact Assessment:
+Ein erfolgreicher Angriff kann nicht nur zu Datenverlust, sondern auch zu falschen Behandlungsentscheidungen führen, da Patientendaten manipuliert werden könnten.
+Konsequenzen:
+– Fehlbehandlungen
+– Verzögerungen in der Diagnostik
+– Vertrauensverlust bei Patienten
+
+Tactic Choice:
+Schritte zur Abwehr:
+– Überprüfung der E-Mail-Authentizität vor dem Öffnen
+– Rückfrage bei den Absendern über alternative Kommunikationswege
+– Einsatz von Sicherheitssoftware in den Behandlungsräumen
+
+Tactic Justification:
+Die sorgfältige Überprüfung schützt vor Fehlinterpretationen, die direkt den Patienten betreffen könnten. Die Kombination aus technischer und kommunikativer Absicherung gewährleistet, dass nur verifizierte Informationen in die Patientenakte einfließen.
+
+Tactic Mastery:
+Konkrete Schritte:
+
+    Öffnen Sie verdächtige E-Mails nicht direkt im Behandlungsumfeld.
+    Nutzen Sie geprüfte Kommunikationskanäle zur Verifizierung.
+    Schalten Sie technische Filter und Anti-Phishing-Programme ein.
+    Schulen Sie regelmäßig Ihr ärztliches Personal in den Erkennungskriterien.
+
+Tactic Check & Follow-Up:
+Nach einem Vorfall oder einer Übung dokumentieren Sie den Vorfall, informieren das IT-Sicherheitsteam und besprechen Verbesserungsmöglichkeiten im Team. Regelmäßige Updates und Feedbackrunden sind hier essenziell.
+2. Ransomware-Angriffe
+
+Threat Awareness:
+In klinischen Systemen – etwa bei der elektronischen Patientenakte – kann ein Ransomware-Angriff fatale Folgen haben. Als behandelnder Arzt müssen Sie sich der Risiken bewusst sein, die Ihre Diagnostik und Therapie beeinträchtigen könnten.
+Fragen:
+– Welche Systeme in der Behandlung sind besonders kritisch?
+– Wie kann ein plötzlicher Ausfall den Therapieprozess stören?
+
+Threat Identification:
+Erkennungsmerkmale können Systemabstürze, Fehlermeldungen oder Zugriffsprobleme in der elektronischen Patientenakte sein.
+Beispiel: Ein plötzlicher Ausfall des PACS-Systems (Bildarchivierung), der zu Verzögerungen in der Radiologie führt.
+
+Threat Impact Assessment:
+Die Folgen können gravierend sein:
+– Verzögerte Diagnosen
+– Unterbrechung der Patientenversorgung
+– Reputationsschäden und rechtliche Konsequenzen
+
+Tactic Choice:
+Empfohlene Maßnahmen:
+– Implementierung redundanter Systeme und regelmäßiger Backups
+– Schulung des ärztlichen Personals im Erkennen erster Anzeichen
+– Einsatz von Echtzeitüberwachungssystemen
+
+Tactic Justification:
+Backups und redundante Systeme minimieren den Datenverlust und gewährleisten die kontinuierliche Patientenversorgung. Die technische Absicherung kombiniert mit einem geschulten Team reduziert die Reaktionszeit im Ernstfall erheblich.
+
+Tactic Mastery:
+Schritte:
+
+    Stellen Sie sicher, dass kritische Systeme regelmäßig gesichert werden.
+    Schulen Sie das Personal, sodass erste Symptome eines Angriffs zeitnah erkannt werden.
+    Etablieren Sie Notfallpläne für den sofortigen Wechsel in Backup-Systeme.
+    Führen Sie regelmäßige Simulationen im klinischen Umfeld durch.
+
+Tactic Check & Follow-Up:
+Nach einem Vorfall erfolgt eine detaillierte Analyse. Das Behandlungsteam und die IT-Abteilung evaluieren die Effektivität der Maßnahmen, und Anpassungen werden in zukünftige Notfallpläne integriert.
+3. Datenverlust und unbefugter Datenzugriff
+
+Threat Awareness:
+In Ihrem klinischen Arbeitsalltag sind Sie auf die Integrität der Patientendaten angewiesen. Schon kleinste Sicherheitslücken können zu schwerwiegenden Behandlungsfehlern führen.
+Fragen:
+– Wie werden Patientendaten in der Praxis verarbeitet und gespeichert?
+– Wo können Unregelmäßigkeiten auftreten?
+
+Threat Identification:
+Typische Indikatoren sind ungewöhnliche Login-Aktivitäten und unerklärliche Änderungen in Patientenakten.
+Beispiel: Ein unautorisierter Zugriff, der zur Manipulation von Laborwerten führt.
+
+Threat Impact Assessment:
+Fehlerhafte Daten können zu falschen Diagnosen, unnötigen Behandlungen und einem erheblichen Vertrauensverlust führen.
+Konsequenzen:
+– Gefährdung der Patientensicherheit
+– Rechtliche Konsequenzen
+– Imageverlust der Einrichtung
+
+Tactic Choice:
+Maßnahmen:
+– Einführung starker Authentifizierungsverfahren (z. B. MFA)
+– Regelmäßige Überwachung und Audits der Datenzugriffe
+– Verschlüsselung aller Patientendaten
+
+Tactic Justification:
+Strenge Zugangskontrollen und regelmäßige Audits gewährleisten, dass nur befugtes Personal Zugriff auf sensible Daten erhält. Dies ist essenziell, um Behandlungsfehler zu vermeiden und die Datensicherheit zu gewährleisten.
+
+Tactic Mastery:
+Umsetzung:
+
+    Aktivieren Sie Multi-Faktor-Authentifizierung in allen klinischen Systemen.
+    Führen Sie regelmäßige Überprüfungen und Protokollanalysen durch.
+    Schulen Sie alle Mitarbeiter im sicheren Umgang mit Patientendaten.
+    Aktualisieren Sie Sicherheitssoftware und Betriebssysteme kontinuierlich.
+
+Tactic Check & Follow-Up:
+Dokumentieren Sie alle Zugriffsprotokolle und führen Sie regelmäßige Reviews durch. Sensibilisieren Sie das gesamte Behandlungsteam regelmäßig für Datenschutz und IT-Sicherheit.
+4. Insiderbedrohungen
+
+Threat Awareness:
+Auch im behandelnden Bereich können interne Fehler oder bewusste Verstöße schwerwiegende Folgen haben. Die enge Zusammenarbeit im Behandlungsteam birgt das Risiko, dass Sicherheitsrichtlinien versehentlich missachtet werden.
+Fragen:
+– Welche internen Abläufe könnten anfällig für Sicherheitsverstöße sein?
+– Wie erkennen Sie ungewöhnliches Verhalten im Team?
+
+Threat Identification:
+Warnsignale können sein:
+– Wiederholte Verstöße gegen den Datenschutz
+– Unerklärliche Änderungen in Patientenakten
+– Ungewöhnliche Kommunikationsmuster zwischen Teammitgliedern
+
+Threat Impact Assessment:
+Ein interner Sicherheitsvorfall kann zu unautorisiertem Datenzugriff und Manipulation führen, was unmittelbar die Patientenversorgung gefährdet.
+Konsequenzen:
+– Direkte Beeinträchtigung der Therapiequalität
+– Vertrauensverlust im Team und bei Patienten
+– Mögliche rechtliche Konsequenzen
+
+Tactic Choice:
+Abwehrstrategien umfassen:
+– Sensibilisierungs- und Schulungsmaßnahmen für alle Teammitglieder
+– Etablierung klarer Verhaltensregeln und Meldewege
+– Einführung eines Monitoring-Systems für interne Zugriffe
+
+Tactic Justification:
+Die Kombination aus präventiven Schulungen und klaren Richtlinien sorgt dafür, dass alle Teammitglieder ihre Verantwortung kennen und potenzielle Verstöße frühzeitig erkannt werden. Dies verhindert, dass interne Schwachstellen unentdeckt bleiben.
+
+Tactic Mastery:
+Konkrete Schritte:
+
+    Führen Sie regelmäßige Workshops zu Datenschutz und Sicherheitsrichtlinien durch.
+    Etablieren Sie ein anonymes Meldeverfahren für interne Verstöße.
+    Überwachen Sie systematisch interne Zugriffe und Aktivitäten.
+    Reagieren Sie unmittelbar bei ersten Anzeichen eines Verstoßes und passen Sie die internen Prozesse an.
+
+Tactic Check & Follow-Up:
+Nach jeder Schulungsrunde erfolgt eine Evaluation. Feedbackrunden im Team und regelmäßige interne Audits helfen, die Maßnahmen zu optimieren und das Sicherheitsbewusstsein kontinuierlich zu steigern.
+5. Sicherheitslücken bei medizintechnischen Geräten
+
+Threat Awareness:
+Moderne Behandlungsmethoden stützen sich zunehmend auf vernetzte medizintechnische Geräte. Als behandelnder Arzt ist es entscheidend, sich der Risiken bewusst zu sein, die durch unzureichend gewartete oder veraltete Geräte entstehen können.
+Fragen:
+– Welche medizintechnischen Systeme nutzen Sie im klinischen Alltag?
+– Wie ist deren Sicherheitsstatus und regelmäßige Wartung organisiert?
+
+Threat Identification:
+Erkennungsmerkmale sind fehlende Softwareupdates, unzureichende Zugriffskontrollen und ungesicherte Netzwerkschnittstellen.
+Beispiel: Ein veraltetes Monitoringsystem, das nicht in regelmäßige Wartungszyklen eingebunden ist, könnte potenziell kompromittiert werden.
+
+Threat Impact Assessment:
+Ein Ausfall oder eine Manipulation medizintechnischer Geräte kann direkte Auswirkungen auf die Patientenversorgung haben – etwa durch fehlerhafte Messwerte oder gestörte Therapiesysteme.
+Konsequenzen:
+– Behandlungsfehler
+– Verzögerte Diagnostik
+– Erhöhte Patientenrisiken
+
+Tactic Choice:
+Maßnahmen:
+– Regelmäßige Wartung und Updates aller medizintechnischen Geräte
+– Einsatz von Netzwerkssegmentierungen, um kritische Geräte abzusichern
+– Durchführung von Sicherheitstests und Zertifizierungen
+
+Tactic Justification:
+Durch präventive Wartung und technische Absicherung wird das Risiko eines Geräteausfalls minimiert. Die Integration in ein umfassendes IT-Sicherheitskonzept gewährleistet, dass alle Komponenten auf dem neuesten Stand sind und im Ernstfall isoliert werden können.
+
+Tactic Mastery:
+Praktische Umsetzung:
+
+    Erstellen Sie einen detaillierten Wartungsplan für alle medizintechnischen Geräte.
+    Schulen Sie das medizinische Personal im sicheren Umgang und in der Fehlerdiagnose.
+    Führen Sie regelmäßig externe Sicherheitsüberprüfungen durch.
+    Dokumentieren Sie alle Updates und Wartungsarbeiten.
+    Testen Sie regelmäßig die Funktionsfähigkeit und Sicherheit der Geräte im Rahmen von Notfallsimulationen.
+
+Tactic Check & Follow-Up:
+Nach Wartungszyklen und Sicherheitsüberprüfungen erfolgt eine Evaluation der Ergebnisse. Informieren Sie das gesamte Behandlungsteam über den aktuellen Sicherheitsstatus und passen Sie die Maßnahmen bei neuen technischen Entwicklungen an.
+
+Abschluss und Zusammenfassung (für Ärzte – Behandelnd):
+In Ihrer Rolle als behandelnder Arzt stellen Sie die Sicherheit der digitalen Behandlungssysteme sicher – sei es bei der Kommunikation, im direkten Patientenkontakt oder im Umgang mit medizintechnischen Geräten. Durch die strukturierte Anwendung des Kompetenzmodells werden alle fünf Bedrohungsvektoren systematisch adressiert, sodass Sie im klinischen Alltag optimal vorbereitet sind, um sowohl die Patientensicherheit als auch den reibungslosen Behandlungsablauf zu gewährleisten.

@@ -1,0 +1,194 @@
+Medizinisches Fachpersonal – Verwaltende Aufgaben
+
+Einleitung und Kontext
+Medizinisches Fachpersonal in verwaltenden Positionen (z. B. Pflegeleitung oder technische Assistenz) spielt eine zentrale Rolle bei der Organisation und Dokumentation von Behandlungsprozessen. Dieses Skript zeigt, wie das Kompetenzmodell genutzt wird, um IT-Sicherheitsrisiken systematisch zu identifizieren und abzuwehren.
+
+(Struktur analog zu den bisherigen Skripts.)
+1. Phishing-/Social-Engineering-Attacken
+
+Threat Awareness:
+Im administrativen Umfeld des medizinischen Fachpersonals erhalten Sie regelmäßig E-Mails, die kritische Informationen zur Dienstplanung oder Patientenverwaltung enthalten. Es ist wichtig, stets wachsam gegenüber untypischen Kommunikationsmustern zu sein.
+Fragen:
+– In welchen Kontexten tauchen verdächtige E-Mails auf?
+– Wie wird Phishing hier als Risiko erkennbar?
+
+Threat Identification:
+Auffällige Merkmale sind fehlerhafte Absenderadressen, untypische Betreffzeilen und verdächtige Links.
+Beispiel: Eine E-Mail, die angeblich eine dringende Änderung im Dienstplan fordert, weist ungewöhnliche Formulierungen auf.
+
+Threat Impact Assessment:
+Ein erfolgreicher Phishing-Angriff kann zu Fehlplanungen und dem Verlust sensibler Verwaltungsdaten führen.
+Konsequenzen:
+– Störungen in der Dienstplanung
+– Kompromittierung personenbezogener Daten
+– Hohe Nacharbeitskosten
+
+Tactic Choice:
+Empfohlene Maßnahmen:
+– Prüfung der Absender und Inhalte vor dem Öffnen
+– Rückfrage bei Kollegen oder Vorgesetzten
+– Einsatz von E-Mail-Sicherheitslösungen
+
+Tactic Justification:
+Die Kombination aus technischer Prüfung und persönlicher Absicherung verhindert, dass fehlerhafte Informationen in den Verwaltungsalltag einfließen.
+
+Tactic Mastery:
+Schritte:
+
+    Öffnen Sie verdächtige Mails erst in einem sicheren Umfeld.
+    Vergleichen Sie den Inhalt mit bekannten Mustern.
+    Informieren Sie bei Zweifeln Ihren Vorgesetzten oder die IT-Abteilung.
+
+Tactic Check & Follow-Up:
+Nach einem Vorfall dokumentieren Sie diesen und evaluieren, ob die internen Sicherheitsrichtlinien angepasst werden müssen.
+2. Ransomware-Angriffe
+
+Threat Awareness:
+Für die Verwaltung sensibler Pflegedaten und organisatorischer Informationen besteht ein hohes Risiko durch Ransomware.
+Fragen:
+– Welche Systeme sind besonders kritisch?
+– Wie wirken sich Systemausfälle auf die pflegerische Organisation aus?
+
+Threat Identification:
+Anzeichen sind plötzliche Sperrungen von Zugängen oder unerklärliche Fehlermeldungen in Verwaltungsprogrammen.
+Beispiel: Ein unerwarteter Zugriffsausfall in der elektronischen Pflegedokumentation.
+
+Threat Impact Assessment:
+Ein erfolgreicher Angriff führt zu Verzögerungen in der Dienstplanung und beeinträchtigt die Kommunikation innerhalb des Teams.
+Konsequenzen:
+– Unterbrechung administrativer Abläufe
+– Verlust wichtiger Pflegedaten
+– Hohe Wiederherstellungskosten
+
+Tactic Choice:
+Empfohlene Maßnahmen:
+– Regelmäßige Datensicherungen und Notfallpläne
+– Schulung des Personals in Erkennung und Reaktion
+– Einsatz moderner Sicherheitssoftware
+
+Tactic Justification:
+Durch präventive Backup- und Notfallstrategien kann der Schaden im Falle eines Angriffs minimiert werden – essenziell für einen störungsfreien Pflegebetrieb.
+
+Tactic Mastery:
+Schritte:
+
+    Implementieren Sie regelmäßige, automatisierte Backups.
+    Schulen Sie das Personal in der schnellen Erkennung von Systemausfällen.
+    Etablieren Sie einen Notfallplan in Zusammenarbeit mit der IT-Abteilung.
+
+Tactic Check & Follow-Up:
+Evaluieren Sie die Notfallmaßnahmen nach Vorfällen oder Tests und passen Sie diese bei Bedarf an.
+3. Datenverlust und unbefugter Datenzugriff
+
+Threat Awareness:
+In Ihrer administrativen Tätigkeit werden täglich sensible Patientendaten verarbeitet. Ein Datenleck kann gravierende Folgen haben.
+Fragen:
+– Welche Daten sind besonders schützenswert?
+– Wie werden diese derzeit gesichert?
+
+Threat Identification:
+Hinweise auf unbefugte Zugriffe umfassen ungewöhnliche Zugriffsprotokolle und fehlende Aktualisierungen in den Datenbanken.
+Beispiel: Unerklärliche Änderungen in Patientendatensätzen während der Schicht.
+
+Threat Impact Assessment:
+Ein unbefugter Zugriff kann zu schwerwiegenden Datenschutzverstößen und direkten Auswirkungen auf die Patientenversorgung führen.
+Konsequenzen:
+– Verlust von sensiblen Daten
+– Rechtliche Konsequenzen
+– Vertrauensverlust bei Patienten und Mitarbeitern
+
+Tactic Choice:
+Möglichkeiten:
+– Einführung starker Authentifizierungsmethoden
+– Regelmäßige Überwachung der Systeme
+– Verschlüsselung aller Patientendaten
+
+Tactic Justification:
+Die Kombination aus technischen Sicherheitsmaßnahmen und kontinuierlicher Überwachung verhindert unbefugten Zugriff und schützt so die Datenintegrität.
+
+Tactic Mastery:
+Umsetzung:
+
+    Aktivieren Sie Multi-Faktor-Authentifizierung in allen relevanten Systemen.
+    Schulen Sie das Personal im sicheren Umgang mit Daten.
+    Führen Sie regelmäßige System-Audits durch.
+
+Tactic Check & Follow-Up:
+Überprüfen Sie regelmäßig die Zugriffsprotokolle und informieren Sie alle Beteiligten über Änderungen und neue Sicherheitsrichtlinien.
+4. Insiderbedrohungen
+
+Threat Awareness:
+Auch in administrativen Bereichen des medizinischen Fachpersonals können interne Verstöße auftreten – sei es durch Nachlässigkeit oder vorsätzliches Fehlverhalten.
+Fragen:
+– Welche internen Prozesse sind besonders kritisch?
+– Wie kann ein interner Verstoß frühzeitig erkannt werden?
+
+Threat Identification:
+Warnsignale sind wiederholte Verstöße gegen interne Datenschutzrichtlinien oder unautorisierte Datennutzung.
+Beispiel: Ein Mitarbeiter, der wiederholt versucht, auf Daten zuzugreifen, für die er keine Berechtigung hat.
+
+Threat Impact Assessment:
+Interne Verstöße können den gesamten Betrieb stören und zu Datenlecks führen.
+Konsequenzen:
+– Interne Konflikte
+– Wirtschaftliche Schäden
+– Vertrauensverlust im Team
+
+Tactic Choice:
+Empfohlene Maßnahmen:
+– Regelmäßige interne Schulungen und Sensibilisierungen
+– Einrichtung eines Monitoring-Systems
+– Klare Kommunikations- und Meldewege
+
+Tactic Justification:
+Durch klare Regeln und kontinuierliche Überwachung werden interne Verstöße frühzeitig erkannt und können effektiv unterbunden werden.
+
+Tactic Mastery:
+Schritte:
+
+    Schulen Sie alle Mitarbeiter in den relevanten Sicherheitsrichtlinien.
+    Implementieren Sie ein Monitoring-System, das verdächtige Aktivitäten meldet.
+    Etablieren Sie anonyme Meldekanäle.
+
+Tactic Check & Follow-Up:
+Führen Sie regelmäßige interne Audits durch, um die Einhaltung der Richtlinien zu überwachen. Aktualisieren Sie Schulungsinhalte und Richtlinien bei Bedarf.
+5. Sicherheitslücken bei medizintechnischen Geräten
+
+Threat Awareness:
+Medizintechnische Geräte, die im administrativen Bereich genutzt werden – etwa zur Datenerfassung – müssen stets auf dem neuesten Stand gehalten werden.
+Fragen:
+– Welche Geräte werden genutzt und wie sind diese integriert?
+– Wie werden Sicherheitsupdates aktuell durchgeführt?
+
+Threat Identification:
+Typische Anzeichen sind fehlende Updates, veraltete Softwareversionen oder unsichere Netzwerkschnittstellen.
+Beispiel: Ein unregelmäßig gewarteter Scanner, der Patientendaten verarbeitet.
+
+Threat Impact Assessment:
+Sicherheitslücken bei diesen Geräten können zu fehlerhaften Datenübertragungen und Unterbrechungen im administrativen Ablauf führen.
+Konsequenzen:
+– Betriebsstörungen
+– Datenverlust
+– Vertrauensverlust in die Technik
+
+Tactic Choice:
+Möglichkeiten:
+– Regelmäßige Wartung und Updates der Geräte
+– Netzwerksicherheit durch Segmentierung
+– Externe Sicherheitsüberprüfungen
+
+Tactic Justification:
+Durch kontinuierliche Wartung und technische Überprüfungen wird das Risiko minimiert, dass veraltete Geräte zu Sicherheitslücken führen. Dies sichert den reibungslosen Betrieb im administrativen Bereich.
+
+Tactic Mastery:
+Umsetzung:
+
+    Erstellen Sie einen Wartungs- und Update-Plan.
+    Schulen Sie das Personal im Umgang mit den Geräten.
+    Führen Sie regelmäßige Sicherheitsüberprüfungen durch.
+
+Tactic Check & Follow-Up:
+Nach Wartung und Überprüfung erfolgt eine Evaluation. Informieren Sie das Team über den aktuellen Stand und passen Sie Maßnahmen bei neuen Erkenntnissen an.
+
+Abschluss und Zusammenfassung (für Med. Fachpersonal – Verwaltend):
+Als medizinisches Fachpersonal in verwaltenden Aufgabenbereichen tragen Sie maßgeblich dazu bei, dass alle administrativen Prozesse reibungslos ablaufen. Mit Hilfe des Kompetenzmodells können Sie die fünf zentralen Bedrohungsvektoren systematisch adressieren und so den sicheren Umgang mit IT-Systemen in Ihrer Einrichtung gewährleisten.

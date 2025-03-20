@@ -1,0 +1,193 @@
+Verwaltung - Behandelnde Aufgaben
+Einleitung und Kontext
+Auch in verwaltenden Tätigkeiten, die den direkten Behandlungsablauf unterstützen – etwa in der Patientenaufnahme oder Terminplanung – ist IT-Sicherheit von zentraler Bedeutung. Dieses Skript richtet sich an Verwaltungskräfte, die in unmittelbarem Kontakt mit klinischen Prozessen stehen und erläutert, wie das Kompetenzmodell den Schutz in diesen Bereichen stärkt.
+
+(Auch hier wird für jeden der fünf Bedrohungsvektoren das 7‑Stufen-Modell angewendet.)
+1. Phishing-/Social-Engineering-Attacken
+
+Threat Awareness:
+Im direkten Patientenverkehr kann eine Phishing-Mail schnell zu Verwirrung führen, wenn beispielsweise gefälschte Terminanfragen oder Anfragen zu sensiblen Patientendaten eingehen.
+Fragen:
+– Wann erscheinen E-Mails im direkten Behandlungszusammenhang ungewöhnlich?
+– Wie unterscheiden sich betrügerische Nachrichten von legitimen Anfragen?
+
+Threat Identification:
+Erkennungsmerkmale sind fehlerhafte Formulierungen, untypische Absenderadressen und verdächtige Anhänge.
+Beispiel: Eine E-Mail mit der Aufforderung, eine Patientenanfrage über einen Link zu bestätigen, bei der der Link nicht zur offiziellen Website führt.
+
+Threat Impact Assessment:
+Ein Phishing-Angriff im direkten Behandlungskontext kann zu Fehlterminierungen, Datenschutzverletzungen und Störungen im Patientenfluss führen.
+Konsequenzen:
+– Verwirrung und Verzögerungen bei der Patientenaufnahme
+– Verlust sensibler Patientendaten
+– Reputationsschäden
+
+Tactic Choice:
+Empfohlene Maßnahmen:
+– Direkte Überprüfung und Rückfrage bei eingehenden Terminanfragen
+– Einsatz von Authentifizierungsmechanismen in der Patientenkommunikation
+– Sensibilisierung der Mitarbeiter in der Terminverwaltung
+
+Tactic Justification:
+Die Kombination aus persönlicher Überprüfung und technischen Sicherheitsmaßnahmen minimiert das Risiko, dass falsche Informationen in den Behandlungsablauf gelangen.
+
+Tactic Mastery:
+Schritte:
+
+    Überprüfen Sie verdächtige E-Mails zunächst nicht direkt in Patientenbereichen.
+    Nutzen Sie festgelegte Kommunikationsprotokolle zur Verifizierung.
+    Schulen Sie das Personal im Erkennen von Phishing-Merkmalen.
+
+Tactic Check & Follow-Up:
+Dokumentieren Sie alle verdächtigen Vorfälle und informieren Sie die IT-Abteilung. Regelmäßige Feedbackrunden und Aktualisierungen der Sicherheitsrichtlinien sind hier essenziell.
+2. Ransomware-Angriffe
+
+Threat Awareness:
+In der Patientenverwaltung kann ein Ransomware-Angriff den gesamten Behandlungsablauf unterbrechen – etwa bei der elektronischen Patientenregistrierung.
+Fragen:
+– Welche Systeme in der Patientenverwaltung sind kritisch?
+– Wie wirken sich Systemausfälle auf den Behandlungsfluss aus?
+
+Threat Identification:
+Typische Hinweise sind plötzliche Sperrungen von Daten oder unerklärliche Systemfehlermeldungen.
+Beispiel: Eine unerwartete Sperrung des elektronischen Terminvergabesystems während einer Hochbetriebsphase.
+
+Threat Impact Assessment:
+Die Folgen umfassen lange Wartezeiten, Terminchaos und potenziell verschobene Behandlungen.
+Konsequenzen:
+– Betriebsunterbrechungen in der Patientenverwaltung
+– Direkte Beeinträchtigung der Patientenversorgung
+– Hohe Wiederherstellungskosten
+
+Tactic Choice:
+Maßnahmen:
+– Implementierung von Backup-Systemen und Notfallplänen für patientenbezogene Daten
+– Schulung der Mitarbeiter in der Erkennung von ersten Anzeichen
+– Einsatz von Echtzeitüberwachung in patientennahen Systemen
+
+Tactic Justification:
+Durch präventive Backup-Maßnahmen und die schnelle Umschaltung auf Notfallsysteme kann der Schaden minimiert und der Behandlungsablauf schnell wiederhergestellt werden.
+
+Tactic Mastery:
+Schritte:
+
+    Implementieren Sie redundante Systeme in der Patientenverwaltung.
+    Schulen Sie das Verwaltungspersonal im Notfallmanagement.
+    Führen Sie regelmäßige Tests der Backup- und Wiederherstellungsprozesse durch.
+
+Tactic Check & Follow-Up:
+Nach einem Vorfall erfolgt eine detaillierte Evaluation, um den Notfallplan zu optimieren. Regelmäßige Updates und Schulungen sichern den kontinuierlichen Betrieb.
+3. Datenverlust und unbefugter Datenzugriff
+
+Threat Awareness:
+In verwaltenden Tätigkeiten, die den direkten Behandlungsablauf unterstützen, sind Patientendaten von höchster Priorität.
+Fragen:
+– Welche sensiblen Daten werden in der Termin- und Patientenverwaltung verarbeitet?
+– Wo liegen mögliche Sicherheitslücken?
+
+Threat Identification:
+Ungewöhnliche Login-Aktivitäten und fehlende Protokollierungen sind erste Anzeichen.
+Beispiel: Unerklärliche Zugriffe auf Patientenakten, die nicht den üblichen Arbeitszeiten entsprechen.
+
+Threat Impact Assessment:
+Ein unbefugter Datenzugriff kann zu erheblichen Datenschutzverletzungen und einem Vertrauensverlust bei Patienten führen.
+Konsequenzen:
+– Datenlecks und Verstöße gegen Datenschutzgesetze
+– Hohe Bußgelder
+– Schädigung des Images der Einrichtung
+
+Tactic Choice:
+Möglichkeiten umfassen:
+– Einführung starker Authentifizierungsmethoden
+– Regelmäßige Überwachung der Datenzugriffe
+– Verschlüsselung sensibler Patienteninformationen
+
+Tactic Justification:
+Diese Maßnahmen stellen sicher, dass nur befugtes Personal auf sensible Daten zugreifen kann und ermöglichen eine schnelle Identifikation von Sicherheitsvorfällen.
+
+Tactic Mastery:
+Umsetzungsschritte:
+
+    Aktivieren Sie Multi-Faktor-Authentifizierung in patientennahen Systemen.
+    Schulen Sie das Personal im Umgang mit sensiblen Daten.
+    Führen Sie regelmäßige Audits und Überprüfungen der Zugriffsprotokolle durch.
+
+Tactic Check & Follow-Up:
+Führen Sie nach jeder Überprüfung eine Auswertung durch, um etwaige Sicherheitslücken zu schließen. Informieren Sie alle Mitarbeiter über aktuelle Datenschutzrichtlinien.
+4. Insiderbedrohungen
+
+Threat Awareness:
+Interne Abläufe in der direkten Patientenverwaltung können durch interne Verstöße gefährdet werden – etwa durch fahrlässiges Verhalten bei der Weitergabe von Zugangsdaten.
+Fragen:
+– Welche internen Prozesse sind besonders sensibel?
+– Wie können Verstöße frühzeitig erkannt werden?
+
+Threat Identification:
+Anzeichen sind ungewöhnliche Verhaltensmuster und wiederholte Regelverstöße.
+Beispiel: Ein Mitarbeiter, der systematisch versucht, auf Daten zuzugreifen, für die er keine Berechtigung hat.
+
+Threat Impact Assessment:
+Ein interner Sicherheitsverstoß kann den gesamten Behandlungsablauf stören und zu erheblichen Datenschutzproblemen führen.
+Konsequenzen:
+– Unautorisierte Datenveränderungen
+– Vertrauensverlust in die interne Datenverwaltung
+– Wirtschaftliche und rechtliche Konsequenzen
+
+Tactic Choice:
+Möglichkeiten:
+– Regelmäßige interne Schulungen und Sensibilisierungskampagnen
+– Implementierung von Monitoring-Tools
+– Einrichtung eines anonymen Meldekanals für interne Verstöße
+
+Tactic Justification:
+Die Kombination aus Prävention und Kontrolle sorgt dafür, dass interne Sicherheitsverstöße frühzeitig erkannt und behoben werden können – und schützt so den gesamten Behandlungsablauf.
+
+Tactic Mastery:
+Schritte:
+
+    Führen Sie regelmäßige Workshops und Schulungen durch.
+    Überwachen Sie systematisch die internen Datenzugriffe.
+    Etablieren Sie klare Verhaltensregeln und Konsequenzen bei Verstößen.
+
+Tactic Check & Follow-Up:
+Dokumentieren Sie alle Vorfälle, evaluieren Sie regelmäßig die internen Prozesse und passen Sie die Sicherheitsmaßnahmen bei Bedarf an.
+5. Sicherheitslücken bei medizintechnischen Geräten
+
+Threat Awareness:
+In der Patientenverwaltung werden häufig medizintechnische Geräte zur Unterstützung des Behandlungsablaufs genutzt, beispielsweise zur Datenerfassung an der Rezeption oder in der Notaufnahme.
+Fragen:
+– Welche medizintechnischen Geräte kommen in Ihrem Bereich zum Einsatz?
+– Wie wird deren Wartung und Sicherheit gewährleistet?
+
+Threat Identification:
+Typische Anzeichen sind fehlende Updates, ungesicherte Netzwerkschnittstellen oder nicht dokumentierte Softwareversionen.
+Beispiel: Ein veralteter Scanner, der Patientendaten erfasst, aber keine aktuellen Sicherheitsupdates erhält.
+
+Threat Impact Assessment:
+Ein Sicherheitsvorfall bei diesen Geräten kann zu falschen Datenübertragungen und erheblichen Störungen im Patientenfluss führen.
+Konsequenzen:
+– Fehlende oder fehlerhafte Patientendaten
+– Unterbrechung administrativer Abläufe
+– Vertrauensverlust in die Technik der Einrichtung
+
+Tactic Choice:
+Maßnahmen:
+– Regelmäßige Überprüfung und Wartung der medizintechnischen Geräte
+– Implementierung von Updates und Patches
+– Netzwerksegmentierung zur zusätzlichen Absicherung
+
+Tactic Justification:
+Regelmäßige Wartung und technische Updates minimieren das Risiko, dass veraltete Geräte als Einfallstor dienen. Durch zusätzliche Netzwerkabsicherungen wird der Schaden im Fall eines Angriffs begrenzt.
+
+Tactic Mastery:
+Schritte:
+
+    Erstellen Sie einen Wartungsplan für alle medizintechnischen Geräte in patientennahen Bereichen.
+    Schulen Sie das Personal im Erkennen von Sicherheitslücken an den Geräten.
+    Führen Sie regelmäßige Sicherheitsüberprüfungen und externe Audits durch.
+
+Tactic Check & Follow-Up:
+Nach jeder Wartungsrunde sollten die Ergebnisse dokumentiert und in regelmäßigen Meetings besprochen werden. Aktualisieren Sie den Wartungsplan bei neuen Sicherheitsrisiken.
+
+Abschluss und Zusammenfassung (für Verwaltung – Behandelnd):
+Auch wenn Sie in der Verwaltung tätig sind, der direkte Kontakt zu Patientenprozessen erfordert besondere Sorgfalt. Mit diesem Skript können Sie systematisch alle fünf relevanten Bedrohungsvektoren adressieren und dadurch die Sicherheit und Effizienz im Behandlungsablauf unterstützen.

@@ -4,6 +4,7 @@ import requests
 from sentence_transformers import SentenceTransformer
 from typing import List, Dict, Any
 import json
+from langchain_ollama.llms import OllamaLLM
 
 # --- Datenstruktur für Dokumente ---
 class Document:
@@ -42,22 +43,28 @@ class VectorDatabase:
 
 # --- Funktion zum Aufruf des ollama LLM über eine REST API ---
 def call_ollama(prompt: str) -> str:
-    api_url = "https://j2vzagdvh55wse-11434.proxy.runpod.net/api/generate"  # Hier ggf. anpassen!
-    headers = {"Content-Type": "application/json"}
-    model = "llama3.1"
-    payload = {
-        "prompt": prompt,
-        model: model,
-        # "max_tokens": 500  # Je nach Bedarf anpassen
-    }
+    """
+    Ruft das ollama LLM über die LangChain-Bibliothek auf.
+    Diese Methode wurde bestätigt, dass sie mit llama3.1 funktioniert.
+    """
     try:
-        response = requests.post(api_url, headers=headers, data=json.dumps(payload))
-        response.raise_for_status()
-        data = response.json()
-        # Es wird angenommen, dass die Antwort im Feld "text" zurückgegeben wird.
-        return data.get("text", "Keine Antwort erhalten.")
-    except requests.RequestException as e:
-        return f"LLM API-Fehler: {e}"
+        # OllamaLLM initialisieren
+        llm = OllamaLLM(
+            model="llama3.1",
+            base_url="http://localhost:11434",
+            temperature=0.7  # Optional, kann angepasst werden
+        )
+        
+        # Prompt an das Modell senden und Antwort erhalten
+        print(f"Sende Anfrage über LangChain an Modell: llama3.1")
+        response = llm.invoke(prompt)
+        
+        # Erfolgreiche Antwort zurückgeben
+        return response
+    except Exception as e:
+        error_msg = f"LangChain LLM-Fehler: {str(e)}"
+        print(error_msg)
+        return error_msg
 
 # --- Funktion zur Erstellung eines erweiterten Prompts ---
 def create_prompt(user_query: str, retrieved_docs: List[Document]) -> str:

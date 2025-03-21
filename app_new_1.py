@@ -1777,12 +1777,16 @@ class ELearningCourseGenerator:
 
 
 # Flask-API für den E-Learning-Kurs-Generator
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, render_template
 import tempfile
 import threading
 import queue
+import os
 
-app = Flask(__name__)
+# Erstelle Flask-App mit statischen Dateien und Templates
+app = Flask(__name__, 
+            static_folder='static',
+            template_folder='templates')
 
 # Globale Variable für den Generator
 generator = None
@@ -1797,6 +1801,17 @@ def initialize_generator():
         generator = ELearningCourseGenerator()
         generator.setup()
     return generator
+
+# Stelle sicher, dass die Verzeichnisse für die Benutzeroberfläche existieren
+def ensure_ui_directories():
+    """Erstellt die notwendigen Verzeichnisse für die UI, falls nicht vorhanden"""
+    os.makedirs("templates", exist_ok=True)
+    os.makedirs("static", exist_ok=True)
+    os.makedirs("static/css", exist_ok=True)
+    os.makedirs("static/js", exist_ok=True)
+    
+    # Erstelle die UI-Dateien, wenn sie nicht existieren
+    create_ui_files()
 
 def process_chat_queue():
     """Verarbeitet die Chat-Anfragen in der Warteschlange."""
@@ -1919,59 +1934,479 @@ def health_check():
 @app.route('/', methods=['GET'])
 def home():
     """
-    Einfache Begrüßungsseite für den API-Server.
+    Rendert die Chat-Benutzeroberfläche für den E-Learning-Kurs-Generator.
     """
-    return """
-    <html>
-    <head>
-        <title>E-Learning-Kurs-Generator API</title>
-        <style>
-            body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-            h1 { color: #2c3e50; }
-            .endpoint { margin-bottom: 20px; background-color: #f5f5f5; padding: 15px; border-radius: 5px; }
-            .method { font-weight: bold; color: #27ae60; }
-            .url { font-family: monospace; }
-            .description { margin-top: 10px; }
-        </style>
-    </head>
-    <body>
-        <h1>E-Learning-Kurs-Generator API</h1>
-        <p>Willkommen bei der API des E-Learning-Kurs-Generators für Informationssicherheit.</p>
-        
-        <h2>Verfügbare Endpunkte:</h2>
-        
-        <div class="endpoint">
-            <div><span class="method">GET</span> <span class="url">/api/start</span></div>
-            <div class="description">Startet eine neue Konversation und gibt die erste Frage zurück.</div>
-        </div>
-        
-        <div class="endpoint">
-            <div><span class="method">POST</span> <span class="url">/api/chat</span></div>
-            <div class="description">Sendet eine Nachricht an den Chatbot und erhält eine Antwort.</div>
-        </div>
-        
-        <div class="endpoint">
-            <div><span class="method">POST</span> <span class="url">/api/reset</span></div>
-            <div class="description">Setzt die Konversation zurück, um einen neuen Kurs zu erstellen.</div>
-        </div>
-        
-        <div class="endpoint">
-            <div><span class="method">GET</span> <span class="url">/api/download?format=txt</span></div>
-            <div class="description">Lädt das generierte Skript im gewünschten Format herunter (txt, json oder html).</div>
-        </div>
-        
-        <div class="endpoint">
-            <div><span class="method">POST</span> <span class="url">/api/reindex</span></div>
-            <div class="description">Indiziert die Dokumente neu (z.B. nach Hinzufügen neuer Dokumente).</div>
-        </div>
-        
-        <div class="endpoint">
-            <div><span class="method">GET</span> <span class="url">/api/health</span></div>
-            <div class="description">Überprüft, ob der Server läuft.</div>
-        </div>
-    </body>
-    </html>
+    return render_template('index.html')
+
+@app.route('/api-docs', methods=['GET'])
+def api_docs():
     """
+    Dokumentation der API-Endpunkte.
+    """
+    return render_template('api_docs.html')
+
+# Hilfsfunktion zum Erstellen der UI-Dateien
+def create_ui_files():
+    """Erstellt die UI-Dateien, wenn sie nicht existieren"""
+    # Erstelle index.html
+    if not os.path.exists("templates/index.html"):
+        with open("templates/index.html", "w", encoding="utf-8") as f:
+            f.write("""<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Learning-Kurs-Generator</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="chat-container">
+            <h1>E-Learning-Kurs-Generator für Informationssicherheit</h1>
+            <div class="chat-box" id="chatBox">
+                <!-- Chat-Nachrichten werden hier dynamisch hinzugefügt -->
+            </div>
+            <div class="input-area">
+                <input type="text" id="userInput" placeholder="Ihre Antwort..." autofocus>
+                <button id="sendButton">Senden</button>
+            </div>
+            <div class="action-buttons">
+                <button id="resetButton">Neue Konversation</button>
+                <div class="download-options">
+                    <span>Skript herunterladen als:</span>
+                    <button id="downloadTxtButton" class="download-button">TXT</button>
+                    <button id="downloadJsonButton" class="download-button">JSON</button>
+                    <button id="downloadHtmlButton" class="download-button">HTML</button>
+                </div>
+            </div>
+        </div>
+        <div class="script-preview">
+            <h2>Skript-Vorschau</h2>
+            <div class="script-content" id="scriptContent">
+                <p class="preview-placeholder">Hier wird die Vorschau des generierten Skripts angezeigt, sobald es erstellt wurde.</p>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>""")
+    
+    # Erstelle style.css
+    if not os.path.exists("static/css/style.css"):
+        with open("static/css/style.css", "w", encoding="utf-8") as f:
+            f.write("""* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f7f9;
+    color: #333;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    grid-column: span 2;
+}
+
+.chat-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+}
+
+.chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #e1e4e8;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background-color: #fafafa;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 90%;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.assistant-message {
+    background-color: #e9eaee;
+    align-self: flex-start;
+}
+
+.input-area {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+#userInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+}
+
+#sendButton {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#sendButton:hover {
+    background-color: #45a049;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#resetButton {
+    padding: 8px 15px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#resetButton:hover {
+    background-color: #d32f2f;
+}
+
+.download-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.download-button {
+    padding: 8px 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.download-button:hover {
+    background-color: #2980b9;
+}
+
+.script-preview {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.script-preview h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.script-content {
+    overflow-y: auto;
+    padding: 15px;
+    border: 1px solid #e1e4e8;
+    border-radius: 5px;
+    background-color: #fafafa;
+    flex-grow: 1;
+    white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.preview-placeholder {
+    color: #6c757d;
+    font-style: italic;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        grid-column: span 1;
+    }
+    
+    .chat-container, .script-preview {
+        height: auto;
+        max-height: 70vh;
+    }
+}""")
+    
+    # Erstelle main.js
+    if not os.path.exists("static/js/main.js"):
+        with open("static/js/main.js", "w", encoding="utf-8") as f:
+            f.write("""document.addEventListener('DOMContentLoaded', function() {
+    const chatBox = document.getElementById('chatBox');
+    const userInput = document.getElementById('userInput');
+    const sendButton = document.getElementById('sendButton');
+    const resetButton = document.getElementById('resetButton');
+    const downloadTxtButton = document.getElementById('downloadTxtButton');
+    const downloadJsonButton = document.getElementById('downloadJsonButton');
+    const downloadHtmlButton = document.getElementById('downloadHtmlButton');
+    const scriptContent = document.getElementById('scriptContent');
+    
+    let scriptGenerated = false;
+    
+    // Setze Download-Buttons initial deaktiviert
+    downloadTxtButton.disabled = true;
+    downloadJsonButton.disabled = true;
+    downloadHtmlButton.disabled = true;
+    
+    // Starte die Konversation beim Laden der Seite
+    startConversation();
+    
+    // Event-Listener für Senden-Button und Enter-Taste
+    sendButton.addEventListener('click', sendMessage);
+    userInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+    
+    // Event-Listener für Reset-Button
+    resetButton.addEventListener('click', resetConversation);
+    
+    // Event-Listener für Download-Buttons
+    downloadTxtButton.addEventListener('click', () => downloadScript('txt'));
+    downloadJsonButton.addEventListener('click', () => downloadScript('json'));
+    downloadHtmlButton.addEventListener('click', () => downloadScript('html'));
+    
+    // Funktion zum Starten einer neuen Konversation
+    function startConversation() {
+        fetch('/api/start')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    addMessage(data.response, 'assistant');
+                    scriptGenerated = false;
+                    updateButtonStates();
+                }
+            })
+            .catch(error => {
+                console.error('Fehler beim Starten der Konversation:', error);
+                addMessage('Es gab einen Fehler beim Verbinden mit dem Server. Bitte versuchen Sie es später erneut.', 'assistant');
+            });
+    }
+    
+    // Funktion zum Senden einer Nachricht
+    function sendMessage() {
+        const message = userInput.value.trim();
+        if (message === '') return;
+        
+        // Nachricht des Benutzers anzeigen
+        addMessage(message, 'user');
+        
+        // Eingabefeld leeren und Button deaktivieren
+        userInput.value = '';
+        sendButton.disabled = true;
+        
+        // Nachricht an den Server senden
+        fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: message
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                addMessage(data.response, 'assistant');
+                
+                // Prüfe, ob das Skript generiert wurde
+                if (data.response.includes('Hier ist der entworfene E-Learning-Kurs')) {
+                    scriptGenerated = true;
+                    updateScriptPreview(data.response);
+                    updateButtonStates();
+                }
+            } else {
+                addMessage('Es gab einen Fehler bei der Verarbeitung Ihrer Nachricht.', 'assistant');
+            }
+            sendButton.disabled = false;
+        })
+        .catch(error => {
+            console.error('Fehler beim Senden der Nachricht:', error);
+            addMessage('Es gab einen Fehler bei der Kommunikation mit dem Server.', 'assistant');
+            sendButton.disabled = false;
+        });
+    }
+    
+    // Funktion zum Zurücksetzen der Konversation
+    function resetConversation() {
+        fetch('/api/reset', {
+            method: 'POST'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Chat-Box leeren
+                chatBox.innerHTML = '';
+                // Skript-Vorschau zurücksetzen
+                scriptContent.innerHTML = '<p class="preview-placeholder">Hier wird die Vorschau des generierten Skripts angezeigt, sobald es erstellt wurde.</p>';
+                
+                // Erste Nachricht anzeigen
+                addMessage(data.response, 'assistant');
+                
+                scriptGenerated = false;
+                updateButtonStates();
+            }
+        })
+        .catch(error => {
+            console.error('Fehler beim Zurücksetzen der Konversation:', error);
+        });
+    }
+    
+    // Funktion zum Herunterladen des Skripts
+    function downloadScript(format) {
+        if (!scriptGenerated) return;
+        
+        window.open(`/api/download?format=${format}`, '_blank');
+    }
+    
+    // Funktion zum Hinzufügen einer Nachricht zur Chat-Box
+    function addMessage(message, sender) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('chat-message', `${sender}-message`);
+        
+        // Verarbeite Markdown-ähnliche Formatierung
+        let formattedMessage = message.replace(/\\n/g, '<br>');
+        formattedMessage = formattedMessage.replace(/#{1,6} (.+?)\\n/g, '<h3>$1</h3>');
+        formattedMessage = formattedMessage.replace(/\\*\\*(.+?)\\*\\*/g, '<strong>$1</strong>');
+        
+        messageElement.innerHTML = formattedMessage;
+        chatBox.appendChild(messageElement);
+        
+        // Scrolle zum Ende der Chat-Box
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    
+    // Funktion zum Extrahieren und Anzeigen des Skripts in der Vorschau
+    function updateScriptPreview(response) {
+        const scriptStartMarker = 'Hier ist der entworfene E-Learning-Kurs';
+        const startIndex = response.indexOf(scriptStartMarker);
+        
+        if (startIndex !== -1) {
+            const scriptContent = response.substring(startIndex + scriptStartMarker.length).trim();
+            document.getElementById('scriptContent').innerHTML = `<pre>${scriptContent}</pre>`;
+        }
+    }
+    
+    // Funktion zum Aktualisieren der Button-Zustände
+    function updateButtonStates() {
+        downloadTxtButton.disabled = !scriptGenerated;
+        downloadJsonButton.disabled = !scriptGenerated;
+        downloadHtmlButton.disabled = !scriptGenerated;
+    }
+});""")
+
+    # Erstelle die API-Dokumentationsseite
+    if not os.path.exists("templates/api_docs.html"):
+        with open("templates/api_docs.html", "w", encoding="utf-8") as f:
+            f.write("""<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Learning-Kurs-Generator API Dokumentation</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1 { color: #2c3e50; }
+        .endpoint { margin-bottom: 20px; background-color: #f5f5f5; padding: 15px; border-radius: 5px; }
+        .method { font-weight: bold; color: #27ae60; }
+        .url { font-family: monospace; }
+        .description { margin-top: 10px; }
+        .back-link { margin-top: 30px; display: block; }
+    </style>
+</head>
+<body>
+    <h1>E-Learning-Kurs-Generator API</h1>
+    <p>Willkommen bei der API-Dokumentation des E-Learning-Kurs-Generators für Informationssicherheit.</p>
+    
+    <h2>Verfügbare Endpunkte:</h2>
+    
+    <div class="endpoint">
+        <div><span class="method">GET</span> <span class="url">/api/start</span></div>
+        <div class="description">Startet eine neue Konversation und gibt die erste Frage zurück.</div>
+    </div>
+    
+    <div class="endpoint">
+        <div><span class="method">POST</span> <span class="url">/api/chat</span></div>
+        <div class="description">Sendet eine Nachricht an den Chatbot und erhält eine Antwort.</div>
+    </div>
+    
+    <div class="endpoint">
+        <div><span class="method">POST</span> <span class="url">/api/reset</span></div>
+        <div class="description">Setzt die Konversation zurück, um einen neuen Kurs zu erstellen.</div>
+    </div>
+    
+    <div class="endpoint">
+        <div><span class="method">GET</span> <span class="url">/api/download?format=txt</span></div>
+        <div class="description">Lädt das generierte Skript im gewünschten Format herunter (txt, json oder html).</div>
+    </div>
+    
+    <div class="endpoint">
+        <div><span class="method">POST</span> <span class="url">/api/reindex</span></div>
+        <div class="description">Indiziert die Dokumente neu (z.B. nach Hinzufügen neuer Dokumente).</div>
+    </div>
+    
+    <div class="endpoint">
+        <div><span class="method">GET</span> <span class="url">/api/health</span></div>
+        <div class="description">Überprüft, ob der Server läuft.</div>
+    </div>
+    
+    <a href="/" class="back-link">Zurück zum Chat</a>
+</body>
+</html>""")
 
 # Main-Funktion für den Start des Servers
 def main():
@@ -1990,6 +2425,9 @@ def main():
     
     global generator
     generator = ELearningCourseGenerator(config_path=args.config)
+    
+    # Stelle sicher, dass die Verzeichnisse und Dateien für die UI existieren
+    ensure_ui_directories()
     
     # Neuindexierung, falls angefordert
     if args.reindex:

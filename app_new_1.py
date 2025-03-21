@@ -947,8 +947,11 @@ class TemplateManager:
         Returns:
             Abschnitt als Dictionary oder None, wenn nicht gefunden
         """
+        # Konvertiere zu String, falls es ein Integer ist
+        section_id_str = str(section_id)
+        
         for section in self.template["sections"]:
-            if section["id"] == section_id:
+            if str(section["id"]) == section_id_str:
                 return section
         
         return None
@@ -963,8 +966,12 @@ class TemplateManager:
         Returns:
             Nächster Abschnitt als Dictionary oder None, wenn alle bearbeitet
         """
+        # Konvertiere die completed_sections zu Strings, falls sie Integers enthalten
+        completed_sections_str = [str(section_id) for section_id in completed_sections]
+        
         for section in self.template["sections"]:
-            if section["id"] not in completed_sections:
+            section_id = str(section["id"])
+            if section_id not in completed_sections_str:
                 return section
         
         return None
@@ -1088,90 +1095,102 @@ class TemplateGuidedDialog:
             "tactic_check_follow_up": "Was passiert in Ihrem Unternehmen, nachdem ein Sicherheitsvorfall gemeldet wurde?"
         }
         
-        # Finde den nächsten nicht bearbeiteten Abschnitt
-        next_section = self.template_manager.get_next_section(self.conversation_state["completed_sections"])
-        
-        if next_section is None:
-            # Alle Abschnitte wurden bearbeitet
-            self.conversation_state["current_step"] = "review"
-            return self.get_next_question()
-        
-        # Prüfe, ob wir zu einem neuen Abschnitt wechseln
-        current_section = self.conversation_state.get("current_section")
-        is_new_section = current_section != next_section["id"]
-        
-        # Initialisiere question_error_count, falls nicht vorhanden
-        if "question_error_count" not in self.conversation_state:
-            self.conversation_state["question_error_count"] = 0
-        
-        if is_new_section:
-            # Setze Zähler zurück bei neuem Abschnitt
-            self.conversation_state["current_section_question_count"] = 0
-            self.conversation_state["question_error_count"] = 0
-        
-        # Abschnittsinformationen
-        section_id = next_section["id"]
-        section_title = next_section["title"]
-        section_description = next_section["description"]
-        section_type = next_section.get("type", "generic")
-        
         try:
-            # Hole relevante Dokumente für diesen Abschnitt
-            retrieval_queries = self.generate_retrieval_queries(section_title, section_id)
+            # Stelle sicher, dass completed_sections eine Liste von Strings ist
+            completed_sections = [str(section_id) for section_id in self.conversation_state.get("completed_sections", [])]
             
-            retrieved_docs = self.vector_store_manager.retrieve_with_multiple_queries(
-                queries=retrieval_queries,
-                filter={"section_type": section_type},
-                top_k=2  # Reduziere auf 2 statt 3 für weniger Speicherverbrauch
-            )
+            # Finde den nächsten nicht bearbeiteten Abschnitt
+            next_section = self.template_manager.get_next_section(completed_sections)
             
-            # Begrenze Kontext auf max. 1000 Zeichen
-            context_text = "\n\n".join([doc.page_content for doc in retrieved_docs])
-            if len(context_text) > 1000:
-                context_text = context_text[:1000] + "..."
+            if next_section is None:
+                # Alle Abschnitte wurden bearbeitet
+                self.conversation_state["current_step"] = "review"
+                return self.get_next_question()
             
-            # Kontextinformationen für die Fragengenerierung
-            organization = self.conversation_state["context_info"].get(
-                "Für welche Art von Organisation erstellen wir den E-Learning-Kurs (z.B. Krankenhaus, Bank, Behörde)?", "")
-            audience = self.conversation_state["context_info"].get(
-                "Welche Mitarbeitergruppen sollen geschult werden?", "")
+            # Prüfe, ob wir zu einem neuen Abschnitt wechseln
+            current_section = self.conversation_state.get("current_section")
+            current_section_str = str(current_section) if current_section is not None else None
+            next_section_id_str = str(next_section["id"])
+            is_new_section = current_section_str != next_section_id_str
             
-            # Versuche, Frage mit LLM zu generieren
-            question = self.llm_manager.generate_question(
-                section_title=section_title,
-                section_description=section_description,
-                context_text=context_text,
-                organization=organization,
-                audience=audience
-            )
+            # Initialisiere question_error_count, falls nicht vorhanden
+            if "question_error_count" not in self.conversation_state:
+                self.conversation_state["question_error_count"] = 0
             
-            # Setze Fehlerzähler zurück bei Erfolg
-            self.conversation_state["question_error_count"] = 0
+            if is_new_section:
+                # Setze Zähler zurück bei neuem Abschnitt
+                self.conversation_state["current_section_question_count"] = 0
+                self.conversation_state["question_error_count"] = 0
+            
+            # Abschnittsinformationen
+            section_id = next_section["id"]
+            section_title = next_section["title"]
+            section_description = next_section["description"]
+            section_type = next_section.get("type", "generic")
+            
+            # Aktualisiere den Gesprächszustand
+            self.conversation_state["current_section"] = section_id
+            
+            try:
+                # Hole relevante Dokumente für diesen Abschnitt
+                retrieval_queries = self.generate_retrieval_queries(section_title, section_id)
+                
+                retrieved_docs = self.vector_store_manager.retrieve_with_multiple_queries(
+                    queries=retrieval_queries,
+                    filter={"section_type": section_type},
+                    top_k=2  # Reduziere auf 2 statt 3 für weniger Speicherverbrauch
+                )
+                
+                # Begrenze Kontext auf max. 1000 Zeichen
+                context_text = "\n\n".join([doc.page_content for doc in retrieved_docs])
+                if len(context_text) > 1000:
+                    context_text = context_text[:1000] + "..."
+                
+                # Kontextinformationen für die Fragengenerierung
+                organization = self.conversation_state["context_info"].get(
+                    "Für welche Art von Organisation erstellen wir den E-Learning-Kurs (z.B. Krankenhaus, Bank, Behörde)?", "")
+                audience = self.conversation_state["context_info"].get(
+                    "Welche Mitarbeitergruppen sollen geschult werden?", "")
+                
+                # Versuche, Frage mit LLM zu generieren
+                question = self.llm_manager.generate_question(
+                    section_title=section_title,
+                    section_description=section_description,
+                    context_text=context_text,
+                    organization=organization,
+                    audience=audience
+                )
+                
+                # Setze Fehlerzähler zurück bei Erfolg
+                self.conversation_state["question_error_count"] = 0
+                
+            except Exception as e:
+                # Protokolliere Fehler
+                logger.error(f"Fehler bei der Fragengenerierung für {section_title}: {e}", exc_info=True)
+                
+                # Erhöhe Fehlerzähler
+                self.conversation_state["question_error_count"] += 1
+                
+                # Bei zu vielen Fehlern zum nächsten Abschnitt wechseln
+                if self.conversation_state["question_error_count"] > 2:
+                    logger.warning(f"Zu viele Fehler bei {section_title}, überspringe Abschnitt")
+                    self.conversation_state["completed_sections"].append(section_id)
+                    return self.get_next_template_question()
+                
+                # Verwende vordefinierte Frage als Fallback
+                section_type_str = str(section_type)
+                question = predefined_questions.get(section_type_str, f"Können Sie mir mehr über {section_title} in Ihrem Arbeitsalltag erzählen?")
+            
+            # Füge Übergangsinfo hinzu bei neuem Abschnitt
+            if is_new_section:
+                return f"Nun kommen wir zum Abschnitt '{section_title}'.\n\n{question}"
+            
+            return question
             
         except Exception as e:
-            # Protokolliere Fehler
-            logger.error(f"Fehler bei der Fragengenerierung für {section_title}: {e}")
-            
-            # Erhöhe Fehlerzähler
-            self.conversation_state["question_error_count"] += 1
-            
-            # Bei zu vielen Fehlern zum nächsten Abschnitt wechseln
-            if self.conversation_state["question_error_count"] > 2:
-                logger.warning(f"Zu viele Fehler bei {section_title}, überspringe Abschnitt")
-                self.conversation_state["completed_sections"].append(section_id)
-                return self.get_next_template_question()
-            
-            # Verwende vordefinierte Frage als Fallback
-            question = predefined_questions.get(section_type, f"Können Sie mir mehr über {section_title} in Ihrem Arbeitsalltag erzählen?")
-        
-        # Aktualisiere den Gesprächszustand
-        self.conversation_state["current_section"] = section_id
-        
-        # Füge Übergangsinfo hinzu bei neuem Abschnitt
-        if is_new_section:
-            return f"Nun kommen wir zum Abschnitt '{section_title}'.\n\n{question}"
-        
-        return question
+            logger.error(f"Kritischer Fehler in get_next_template_question: {e}", exc_info=True)
+            # Absoluter Fallback bei kritischen Fehlern
+            return "Können Sie mir mehr über die Informationssicherheit in Ihrem Unternehmen erzählen?"
     
     def generate_retrieval_queries(self, section_title: str, section_id: str) -> List[str]:
         """
@@ -1184,6 +1203,9 @@ class TemplateGuidedDialog:
         Returns:
             Liste von Retrieval-Anfragen
         """
+        # Konvertiere section_id zu String, falls es ein Integer ist
+        section_id_str = str(section_id)
+        
         # Basis-Anfrage aus dem Abschnittstitel
         base_query = section_title
         
@@ -1209,7 +1231,7 @@ class TemplateGuidedDialog:
         }
         
         # Verwende das entsprechende Template, falls vorhanden
-        section_query = section_templates.get(section_id, "")
+        section_query = section_templates.get(section_id_str, "")
         
         # Compliance-spezifische Anfrage hinzufügen, falls vorhanden
         compliance_query = ""
@@ -1220,19 +1242,19 @@ class TemplateGuidedDialog:
         
         # Spezifische Anfragen für bestimmte Abschnitte
         specific_queries = []
-        if section_id == "threat_awareness":
+        if section_id_str == "threat_awareness":
             specific_queries.append(f"Alltägliche Situationen Informationssicherheit {organization}")
-        elif section_id == "threat_identification":
+        elif section_id_str == "threat_identification":
             specific_queries.append(f"Phishing Erkennung Merkmale {organization}")
-        elif section_id == "threat_impact_assessment":
+        elif section_id_str == "threat_impact_assessment":
             specific_queries.append(f"Konsequenzen Datenverlust Cyberangriff {organization}")
-        elif section_id == "tactic_choice":
+        elif section_id_str == "tactic_choice":
             specific_queries.append(f"Schutzmaßnahmen Verdächtige E-Mails {organization}")
-        elif section_id == "tactic_justification":
+        elif section_id_str == "tactic_justification":
             specific_queries.append(f"Warum E-Mail-Sicherheit wichtig {organization}")
-        elif section_id == "tactic_mastery":
+        elif section_id_str == "tactic_mastery":
             specific_queries.append(f"Schritte Überprüfung Verdächtige E-Mails {organization}")
-        elif section_id == "tactic_check_follow_up":
+        elif section_id_str == "tactic_check_follow_up":
             specific_queries.append(f"Meldeverfahren Informationssicherheitsvorfälle {organization}")
         
         # Erstelle die Liste der Anfragen
@@ -1272,21 +1294,32 @@ class TemplateGuidedDialog:
             # Prüfe, ob wir das Maximum an Fragen erreicht haben oder die Antwort ausreichend ist
             max_questions_reached = self.conversation_state["current_section_question_count"] >= 3
             
-            if max_questions_reached or self.is_response_adequate(response):
-                # Speichere die Antwort für den aktuellen Abschnitt
-                current_section = self.conversation_state["current_section"]
-                self.conversation_state["section_responses"][current_section] = response
-                
-                # Generiere Inhalt für diesen Abschnitt
-                self._generate_section_content(current_section)
-                
-                self.conversation_state["completed_sections"].append(current_section)
-                
-                # Setze den Fragenzähler für den nächsten Abschnitt zurück
-                self.conversation_state["current_section_question_count"] = 0
-            else:
-                # Fordere eine detailliertere Antwort an
-                return self.generate_followup_question(response)
+            try:
+                if max_questions_reached or self.is_response_adequate(response):
+                    # Speichere die Antwort für den aktuellen Abschnitt
+                    current_section = self.conversation_state["current_section"]
+                    if current_section:
+                        self.conversation_state["section_responses"][current_section] = response
+                        
+                        # Generiere Inhalt für diesen Abschnitt
+                        self._generate_section_content(current_section)
+                        
+                        self.conversation_state["completed_sections"].append(current_section)
+                        
+                        # Setze den Fragenzähler für den nächsten Abschnitt zurück
+                        self.conversation_state["current_section_question_count"] = 0
+                else:
+                    # Fordere eine detailliertere Antwort an
+                    return self.generate_followup_question(response)
+            except Exception as e:
+                logger.error(f"Fehler bei der Verarbeitung der Antwort: {e}", exc_info=True)
+                # Setze die Konversation bei einem Fehler fort
+                current_section = self.conversation_state.get("current_section")
+                if current_section:
+                    self.conversation_state["section_responses"][current_section] = response
+                    self.conversation_state["completed_sections"].append(current_section)
+                    self.conversation_state["current_section_question_count"] = 0
+                    logger.warning(f"Überspringen der Inhaltsgeneration für Sektion {current_section} aufgrund eines Fehlers.")
         
         elif self.conversation_state["current_step"] == "review":
             # Prüfe, ob der Nutzer das Ergebnis sehen möchte
@@ -1322,9 +1355,12 @@ class TemplateGuidedDialog:
             # Erstelle eine Liste von relevanten Begriffen für diesen Abschnitt
             relevant_terms = []
             
-            if "threat" in current_section_id:
+            # Konvertiere section_id in String, falls es ein Integer ist
+            section_id_str = str(current_section_id)
+            
+            if "threat" in section_id_str:
                 relevant_terms.extend(["gefahr", "risiko", "bedrohung", "sicherheit", "schaden"])
-            if "tactic" in current_section_id:
+            if "tactic" in section_id_str:
                 relevant_terms.extend(["maßnahme", "vorgehen", "schutz", "handlung", "prozess"])
             
             # Prüfe, ob mindestens ein relevanter Begriff in der Antwort vorkommt
@@ -1346,6 +1382,10 @@ class TemplateGuidedDialog:
         """
         current_section_id = self.conversation_state["current_section"]
         section = self.template_manager.get_section_by_id(current_section_id)
+        
+        if not section:
+            # Fallback, wenn die Sektion nicht gefunden wird
+            return "Könnten Sie bitte mehr Details zu Ihren Prozessen oder Ihrem Arbeitskontext erläutern?"
         
         followup_prompt = f"""
         Die folgende Antwort des Kunden zu einer Frage über {section['title']} ist recht kurz oder allgemein:
@@ -1377,9 +1417,16 @@ class TemplateGuidedDialog:
         Args:
             section_id: ID des Abschnitts
         """
+        # Konvertiere zu String, falls es ein Integer ist
+        section_id_str = str(section_id)
+        
         # Hole die Antwort des Nutzers
         user_response = self.conversation_state["section_responses"][section_id]
         section = self.template_manager.get_section_by_id(section_id)
+        
+        if not section:
+            logger.warning(f"Sektion mit ID {section_id} nicht gefunden!")
+            return
         
         # Extrahiere Schlüsselinformationen für das Retrieval
         key_concepts = self.llm_manager.extract_key_information(
@@ -1394,7 +1441,7 @@ class TemplateGuidedDialog:
         ]
         
         # Füge abschnittsspezifische Anfragen hinzu
-        retrieval_queries.extend(self.generate_retrieval_queries(section["title"], section_id))
+        retrieval_queries.extend(self.generate_retrieval_queries(section["title"], section_id_str))
         
         # Hole relevante Dokumente
         retrieved_docs = self.vector_store_manager.retrieve_with_multiple_queries(

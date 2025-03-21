@@ -338,19 +338,23 @@ class VectorStoreManager:
         """
         try:
             # Versuche, die Vektordatenbank zu laden
-            if os.path.exists(self.persist_directory):
-                self.vectorstore = FAISS.load_local(
-                    folder_path=self.persist_directory,
-                    embeddings=self.embeddings
-                )
-                
-                logger.info("Bestehende Vektordatenbank geladen")
-                return True
+            if os.path.exists(self.persist_directory) and os.path.isdir(self.persist_directory):
+                if len(os.listdir(self.persist_directory)) > 0:  # Überprüfe, ob Dateien im Verzeichnis vorhanden sind
+                    self.vectorstore = FAISS.load_local(
+                        folder_path=self.persist_directory,
+                        embeddings=self.embeddings
+                    )
+                    
+                    logger.info("Bestehende Vektordatenbank geladen")
+                    return True
+                else:
+                    logger.warning(f"Vektordatenbank-Verzeichnis {self.persist_directory} ist leer.")
+                    return False
             else:
-                logger.warning(f"Vektordatenbank-Verzeichnis {self.persist_directory} existiert nicht.")
+                logger.warning(f"Vektordatenbank-Verzeichnis {self.persist_directory} existiert nicht oder ist kein Verzeichnis.")
                 return False
         except Exception as e:
-            logger.error(f"Fehler beim Laden der Vektordatenbank: {e}")
+            logger.error(f"Fehler beim Laden der Vektordatenbank: {e}", exc_info=True)
             return False
     
     def get_retriever(self, search_type: str = "similarity", search_kwargs: Dict[str, Any] = None):
@@ -404,7 +408,19 @@ class VectorStoreManager:
             for doc in results:
                 matches_filter = True
                 for key, value in filter.items():
-                    if doc.metadata.get(key) != value:
+                    doc_value = doc.metadata.get(key)
+                    
+                    # Fix für den "argument of type 'int' is not iterable"-Fehler
+                    # Stelle sicher, dass wir Werte richtig vergleichen, auch wenn sie unterschiedliche Typen haben
+                    if isinstance(doc_value, int) and isinstance(value, str):
+                        # Versuche, den String in eine Zahl zu konvertieren
+                        try:
+                            value = int(value)
+                        except ValueError:
+                            matches_filter = False
+                            break
+                    
+                    if doc_value != value:
                         matches_filter = False
                         break
                 
@@ -1174,10 +1190,9 @@ class TemplateGuidedDialog:
         # Kontextspezifische Anfragen
         organization = self.conversation_state["context_info"].get(
             "Für welche Art von Organisation erstellen wir den E-Learning-Kurs (z.B. Krankenhaus, Bank, Behörde)?", "")
-        audience = self.conversation_state["context_info"].get(
-            "Welche Mitarbeitergruppen sollen geschult werden?", "")
-        compliance = self.conversation_state["context_info"].get(
-            "Gibt es spezifische Compliance-Anforderungen oder Branchenstandards, die berücksichtigt werden müssen?", "")
+        
+        # Schütze vor leeren oder ungültigen Werten
+        organization = organization if organization else "Organisation"
         
         # Branchenspezifische Anfrage
         industry_query = f"Informationssicherheit für {organization}"
@@ -1198,6 +1213,8 @@ class TemplateGuidedDialog:
         
         # Compliance-spezifische Anfrage hinzufügen, falls vorhanden
         compliance_query = ""
+        compliance = self.conversation_state["context_info"].get(
+            "Gibt es spezifische Compliance-Anforderungen oder Branchenstandards, die berücksichtigt werden müssen?", "")
         if compliance and compliance.strip():
             compliance_query = f"Informationssicherheit {compliance} {organization}"
         
@@ -1825,7 +1842,7 @@ def process_chat_queue():
             response = gen.process_user_input(user_input)
             response_queue.put({"status": "success", "response": response})
         except Exception as e:
-            logger.error(f"Fehler bei der Verarbeitung der Chat-Anfrage: {e}")
+            logger.error(f"Fehler bei der Verarbeitung der Chat-Anfrage: {e}", exc_info=True)  # Fügt Stack-Trace hinzu
             response_queue.put({"status": "error", "message": str(e)})
         chat_queue.task_done()
     is_processing = False

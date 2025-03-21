@@ -42,7 +42,7 @@ class VectorDatabase:
 
 # --- Funktion zum Aufruf des ollama LLM über eine REST API ---
 def call_ollama(prompt: str) -> str:
-    api_url = "http://localhost:11434/api/generate"  # Hier ggf. anpassen!
+    api_url = "https://localhost:11434/api/generate"  # Hier ggf. anpassen!
     headers = {"Content-Type": "application/json"}
     model = "llama3.1"
     payload = {
